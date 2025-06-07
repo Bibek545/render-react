@@ -1,20 +1,27 @@
-const List = () => {
-    const fruits = [{id: 1 , name: "apple", calories: 95},
-        {id: 2 , name: "orange", calories: 96},
-        {id: 3 , name: "mango", calories: 97},
-        {id: 4 , name: "lychee", calories: 98},
-        {id: 5 , name: "grapes", calories: 99},
-        
-    ];
+const List = (props) => {
 
-    // fruits.sort((a,b)=> a.name.localeCompare(b.name)); //Alphabetical
-    // fruits.sort((a,b) => b.name.localeCompare(b.name)); Reverese alphabetical
-    // fruits.sort((a,b) => a.calories - b.calories); numeric
-        fruits.sort((a,b) => b.calories - a.calories);
+    const itemList = props.items;
+    const category = props.category;
 
-    const listItems = fruits.map(fruit => <li key = {fruit.name}> {fruit.name}: {fruit.calories}</li>);
 
-        return (<ol>{listItems}</ol>);
-}
+
+  // fruits.sort((a,b)=> a.name.localeCompare(b.name)); //Alphabetical
+  // fruits.sort((a,b) => b.name.localeCompare(b.name)); Reverese alphabetical
+  // fruits.sort((a,b) => a.calories - b.calories); numeric
+  // fruits.sort((a,b) => b.calories - a.calories); reverse numeric
+
+//   const lowCalFruits = itemList.filter((item) => item.calories < 97); //using filter method to compare 
+
+  const listItems = itemList.map((item) => (
+    <li key={item.name}>
+      {item.name}:{item.calories}
+    </li>
+  ));
+
+  return (
+  <>
+  <h3>{category}</h3>
+  <ol>{listItems}</ol></>);
+};
 
 export default List;
